@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:salesforce="http://www.mulesoft.org/schema/mule/salesforce" xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/salesforce http://www.mulesoft.org/schema/mule/salesforce/current/mule-salesforce.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="4f23136b-5ea9-43d6-855c-3aa167f50746" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="employee-apiFlow" doc:id="8c73bc0d-851d-4ea5-8c6e-2986e6010909" >
+		<http:listener doc:name="Listener" doc:id="324bab21-d80f-4994-9860-4ed3abf92286" config-ref="HTTP_Listener_config" path="/employee/test"/>
+		<logger level="INFO" doc:name="Logger" doc:id="131057af-83b4-4eb6-b24d-ff15615052a0" message="This message is getting logger"/>
+		<set-payload value="Request has been received" doc:name="Set Payload" doc:id="c4505607-cf2e-471d-986a-e7eccdc5cf88" />
+	</flow>
+	<flow name="employee-apiFlow1" doc:id="1eb11656-491f-4e42-a359-f409267baa3c" >
+		<scheduler doc:name="Scheduler" doc:id="69ab9706-8c0a-4873-bab7-416513b2d49e" >
+			<scheduling-strategy >
+				<fixed-frequency frequency="5" timeUnit="SECONDS"/>
+			</scheduling-strategy>
+		</scheduler>
+		<logger level="INFO" doc:name="Copy_of_Logger" doc:id="538fd756-6292-42e8-adb4-76825b5a7b02" message="This message is getting logger" />
+		<set-payload value="Request has been received" doc:name="Copy_of_Set Payload" doc:id="254c2690-3aab-4056-a99d-516f9aa73cda" />
+	</flow>
+</mule>
