@@ -12,6 +12,7 @@ http://www.mulesoft.org/schema/mule/salesforce http://www.mulesoft.org/schema/mu
 		<http:listener doc:name="Listener" doc:id="324bab21-d80f-4994-9860-4ed3abf92286" config-ref="HTTP_Listener_config" path="/employee/test"/>
 		<logger level="INFO" doc:name="Logger" doc:id="131057af-83b4-4eb6-b24d-ff15615052a0" message="This message is getting logger"/>
 		<set-payload value="Request has been received" doc:name="Set Payload" doc:id="c4505607-cf2e-471d-986a-e7eccdc5cf88" />
+		<logger level="INFO" doc:name="Logger" doc:id="744d6ea5-000d-4457-b8d6-c550000914f9" message="hello"/>
 	</flow>
 	<flow name="employee-apiFlow1" doc:id="1eb11656-491f-4e42-a359-f409267baa3c" >
 		<scheduler doc:name="Scheduler" doc:id="69ab9706-8c0a-4873-bab7-416513b2d49e" >
